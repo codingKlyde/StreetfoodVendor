@@ -35,49 +35,56 @@ food_list = \
 
 
 
-def food_menu():
-    # Display menu using loop
-    print("AVAILABLE TODAY:")
-    for i in range(len(food_list)):
-        print("\t[", str(i + 1), "] ", food_list[i].get_name(), " .......... ₱",  str(food_list[i].get_price()))
-    print("\n\n----------")
 
 
+def order():
+    food_name = ""
+    food_price = 0
+    order_total = 0
+    total = 2
 
+    for i in range(total):
+        # Get order from the user
+        order_food = int(input("What it is your order?   "))
 
+        # Determine the order
+        for j in range(order_food):
+            food_list[i].get_name()
+            food_list[i].get_price()
 
-def order(food_list):
-    # Get orders of the user
-    order_food = input("Enter your orders: ")
-    order_food = order_food.split()
-
-
-    # Total ordered foods of each type
-    food_total = [0] * len(food_list)
-
-    # Loop to get the total of each food type
-    for i in range(len(order_food)):
-        # Convert each item to int type
-        order_food[i] = int(order_food[i])
-
-        if order_food[i] in [1, 2, 3, 4, 5, 6, 7, 8, 9]:
-            food_total[order_food[i] - 1] += 1
+        order_total = int(input("How many do you want to order?   "))
 
 
     # Display ordered food
-    print("\n\n*** RECEIPT ***")
+    print("\n\n")
+    print("+ -- -- -- -- -- -- -- -- -- -- -- -- -- +")
+    print("|                                        |")
+    print("|          ***   RECEIPT   ***           |")
+    print("|                                        |")
+    print("|                                        |")
+    for i in range(total):
+        print("| \t", order_total, food_list[i].get_name(), ".......... ₱", food_list[i].get_price() * order_total, "     |")
+    print("|                                        |")
+    print("+ -- -- -- -- -- -- -- -- -- -- -- -- -- +")
+
+
+
+
+
+def food_menu():
+    # Display menu using loop
+    print("AVAILABLE TODAY:: ")
     for i in range(len(food_list)):
-        print("\t ", str(food_total[i]), food_list[i].get_name(), " ( ₱ ", str(food_list[i].get_price() * food_total[i]), ")")
-    print("----------")
-    print("TOTAL PRICE: ", )
-    print("----------")
+        print("\t[", str(i + 1), "] ", food_list[i].get_name(), " .......... ₱",  str(food_list[i].get_price()))
+    print("\n=========")
 
-    return food_list
-
+    # Call the order() after displaying the menu
+    order()
 
 
 
 
+
+#
 if __name__ == "__main__":
     food_menu()
-    order(food_list)

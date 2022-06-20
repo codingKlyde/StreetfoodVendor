@@ -51,7 +51,7 @@ def order(food_list):
     order_food = input("Enter your orders: ")
     order_food = order_food.split()
 
-    order_food = food_list()
+
     # Total ordered foods of each type
     food_total = [0] * len(food_list)
 

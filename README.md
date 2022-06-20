@@ -1,4 +1,6 @@
-# StreetfoodVendor
+# Streetfood Vendor
+<hr>
+A simple ordering system that takes multiple orders from the users and display a receipt
 
 <br/>
 <br/>

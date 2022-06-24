@@ -38,21 +38,37 @@ food_list = \
 
 
 def order():
-    food_name = ""
-    food_price = 0
     order_total = 0
-    total = 2
+
+
+    user_pronoun = input("[Mr/Ms]?   ")
+
+
+    if user_pronoun == "Mr" or user_pronoun == "mr":
+        user_pronoun = " sir!"
+    elif user_pronoun == "Ms" or user_pronoun == "ms":
+        user_pronoun = " ma'am!"
+    else:
+        user_pronoun = "!"
+    print("")
+
+
+    print("Hello" + user_pronoun, "How many orders will you make?   ", end = "")
+    total = int(input())
+
 
     for i in range(total):
         # Get order from the user
-        order_food = int(input("What it is your order?   "))
+        order_food = int(input("What is your order?   "))
 
         # Determine the order
         for j in range(order_food):
             food_list[i].get_name()
             food_list[i].get_price()
 
-        order_total = int(input("How many do you want to order?   "))
+
+        print("How many", food_list[i].get_name(), "do you want to order?   ", end = "")
+        order_total = int(input())
 
 
     # Display ordered food
@@ -65,6 +81,13 @@ def order():
     for i in range(total):
         print("| \t", order_total, food_list[i].get_name(), ".......... ₱", food_list[i].get_price() * order_total, "     |")
     print("|                                        |")
+    print("|                                        |")
+    print("|                                        |")
+    print("|                                        |")
+    print("|                                        |")
+    print("|       THANK YOU FOR ORDERING!!!        |")
+    print("|                                        |")
+    print("|                                        |")
     print("+ -- -- -- -- -- -- -- -- -- -- -- -- -- +")
 
 
@@ -75,16 +98,16 @@ def food_menu():
     # Display menu using loop
     print("AVAILABLE TODAY:: ")
     for i in range(len(food_list)):
-        print("\t[", str(i + 1), "] ", food_list[i].get_name(), " .......... ₱",  str(food_list[i].get_price()))
-    print("\n=========")
+        print("\t[" + str(i + 1) + "]", food_list[i].get_name() + " .......... ₱",  str(food_list[i].get_price()))
+    print("\n==================")
 
-    # Call the order() after displaying the menu
+    # Call the order function after displaying the menu
     order()
 
 
 
 
 
-#
+# PROGRAM STARTS HERE
 if __name__ == "__main__":
     food_menu()

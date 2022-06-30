@@ -1,9 +1,7 @@
 import random
 
 
-#
-#   CLASS
-#
+
 class Food:
     def __init__(self, food_name, food_price, food_stock):
         self.__food_name = food_name
@@ -30,9 +28,6 @@ class Food:
 
 
 
-#
-#   LIST
-#
 # Store name and price in a list
 food_list = \
     [
@@ -51,9 +46,6 @@ food_list = \
 
 
 
-#
-#   FUNCTIONS
-#
 def order():
     ordered_food = []          # Store all food and their quantity to be ordered
     i = 0
@@ -71,18 +63,18 @@ def order():
         order_food = int(input("What is your order? "))
 
 
-
         # Get order quantity
         print("How many", food_list[order_food-1].get_name(), "do you want to order? ", end="")
         order_quantity = int(input())
 
-
         if order_quantity > food_list[order_food - 1].get_stock():
-            print("\n>> SORRY, WE ONLY HAVE ", food_list[order_food-1].get_stock(), " OF ", food_list[order_food-1].get_name(), "AVAILABLE\n")
+            print("\n>> Sorry, we only have ", food_list[order_food-1].get_stock(), " of ", food_list[order_food-1].get_name(), "available. Please try again!\n")
         else:
             ordered_food.insert(i, [order_food - 1, order_quantity])         # Add order to list
-            print("\n>> ORDER", i + 1, "SUCCESSFULLY ADDED\n")
+            print("\n>> Order", i + 1, "successfully added\n")
             i = i + 1
+
+
 
 
 
@@ -94,18 +86,24 @@ def order():
     print("|          ***   RECEIPT   ***           |")
     print("|                                        |")
     print("|                                        |")
-    order_total = 0 # this stores total amount of all orders
+    order_total = 0
     for j in range(total_order):
-        # calculate amount of current order = price * quantity
+        # Calculate amount of current order = price * quantity
         item_total = food_list[ordered_food[j][0]].get_price() * ordered_food[j][1]
         order_total = order_total + item_total
-        print("| \t", ordered_food[j][1], food_list[ordered_food[j][0]].get_name(), ".......... ₱", item_total, "      |")
+
+        print("| \t", ordered_food[j][1], food_list[ordered_food[j][0]].get_name(), "  ..........  ₱", item_total, "   |")
     print("|                                        |")
-    print("|                                -----   |")
-    print("|\t\t\t\t\t\t\t\t₱", order_total, "  |")
+    print("|                                        |")
+    print("|                           -------      |")
+    print("|\t\t\t\t\t\t\t₱", order_total, "      |")
+    print("|                           -------      |")
+    print("|                                        |")
+    print("|                                        |")
     print("|                                        |")
     print("|                                        |")
     print("|       THANK YOU FOR ORDERING!!!        |")
+    print("|                                        |")
     print("|                                        |")
     print("+ -- -- -- -- -- -- -- -- -- -- -- -- -- +")
 
@@ -113,7 +111,7 @@ def order():
 
 
 
-def food_menu():
+def menu():
     # Display menu
     print("Available today:   ")
     for i in range(len(food_list)):
@@ -132,5 +130,5 @@ def food_menu():
 #   MAIN
 #
 if __name__ == "__main__":
-    # Call the food_menu function to display the menu
-    food_menu()
+    menu()
+

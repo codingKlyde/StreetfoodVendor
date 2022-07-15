@@ -37,8 +37,8 @@ food_list = \
         Food("Lumpia", 10, random.randint(0, 300)),
         Food("Isaw", 5, random.randint(0, 300)),
         Food("Hotdog", 20, random.randint(0, 300)),
-        Food("Chicken skin", 5, random.randint(0, 300)),
-        Food("Squid skin", 5, random.randint(0, 300)),
+        Food("Chicken Skin", 5, random.randint(0, 300)),
+        Food("Squid Skin", 5, random.randint(0, 300)),
         Food("Siomai", 15, random.randint(0, 300))
     ]
 
@@ -49,12 +49,14 @@ food_list = \
 def order():
     ordered_food = []          # Store all food and their quantity to be ordered
     i = 0
+    total_order = 0
 
 
     # Get total order
-    print("How many orders will you make? ", end="")
-    total_order = int(input())
-    print("")
+    while total_order > 10:
+        print("How many orders will you make? ", end="")
+        total_order = int(input())
+        print("")
 
 
 
@@ -86,7 +88,7 @@ def order():
     print("|          ***   RECEIPT   ***           |")
     print("|                                        |")
     print("|                                        |")
-    order_total = 0
+    order_total = 0 
     for j in range(total_order):
         # Calculate amount of current order = price * quantity
         item_total = food_list[ordered_food[j][0]].get_price() * ordered_food[j][1]
@@ -115,7 +117,7 @@ def menu():
     # Display menu
     print("Available today:   ")
     for i in range(len(food_list)):
-        print("\t[" + str(i + 1) + "] ---", food_list[i].get_name(), "(", food_list[i].get_stock(), "avail.)", "  ..........  ₱",  str(food_list[i].get_price()))
+        print("\t[" + str(i + 1) + "] -", food_list[i].get_name(), " (", food_list[i].get_stock(), "pcs. )", "  ..........  ₱",  str(food_list[i].get_price()))
     print("\n==================")
 
 
